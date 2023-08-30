@@ -28,7 +28,7 @@
                                     @if (empty($post->cover_image))
                                         <span>Image not available</span>
                                     @else
-                                        <img src="{{ asset('storage/'.$post->cover_image) }}" alt="img non disponibile" width="500px">
+                                        <img src="{{ asset('storage/'.$post->cover_image) }}" alt="{{ $post->title }}">
                                     @endif
                                 </div>
                             </div>
