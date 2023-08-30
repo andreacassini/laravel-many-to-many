@@ -18,11 +18,11 @@ class TypeSeeder extends Seeder
     {
         $types = ['Frontend', 'Backend', 'Fullstack', 'Designer', 'DevOps'];
 
-        foreach ($types as $typ) {
+        foreach ($types as $item) {
             $type = new Type();
 
-            $type->name = $typ;
-            $type->slug = Str::slug($typ, '-');
+            $type->name = $item;
+            $type->slug = $type->generateSlug($item);
 
             $type->save();
         }

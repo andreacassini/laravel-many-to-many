@@ -46,13 +46,14 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         $form_data = $request->all();
-        $post = new Post();
+
 
         if ($request->hasFile('cover_image')) {
             $path = Storage::put('post_image', $request->cover_image);
             $form_data['cover_image'] = $path;
         }
 
+        $post = new Post();
 
         $form_data['slug'] = $post->generateSlug($form_data['title']);
 

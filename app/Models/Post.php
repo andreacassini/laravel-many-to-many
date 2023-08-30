@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Models\Type;
 use App\Models\Technology;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Post extends Model
 {
@@ -19,7 +20,7 @@ class Post extends Model
     {
         return $this->belongsTo(Type::class);
     }
-    public function technologies()
+    public function technologies(): BelongsToMany
     {
         return $this->belongsToMany(Technology::class);
     }
