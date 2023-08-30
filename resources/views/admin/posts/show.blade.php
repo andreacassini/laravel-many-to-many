@@ -20,24 +20,25 @@
                                     @if (empty($post->type->name))
                                         <span>Type not available</span>
                                     @else
-                                        <label class="fw-bold">Tipologia:</label>
+                                        <label class="fw-bold">Type:</label>
                                         <span>{{ $post->type->name }}</span>
                                     @endif
                                 </div>
                                 <div class="my-5">
-                            @if (empty($post->cover_image))
-                                <span>Image not available</span>
-                            @else
-                                <img src="{{ asset('storage/'.$post->cover_image) }}" alt="img non disponibile" width="500px">
-                            @endif
-                        </div>
+                                    @if (empty($post->cover_image))
+                                        <span>Image not available</span>
+                                    @else
+                                        <img src="{{ asset('storage/'.$post->cover_image) }}" alt="img non disponibile" width="500px">
+                                    @endif
+                                </div>
                             </div>
+                            {{-- TECHNOLOGIES --}}
                             <div class=" col-12 my-5">
                                 @if (empty($post->technologies->name))
                                     <span>Technology not available</span>
                                 @else
                                     <!-- Technology Label -->
-                                    <label class="fw-bold">Tecnologia:</label>
+                                    <label class="fw-bold">Technology:</label>
                                     <!-- Technology Content -->
                                     <span>{{ $post->technologies->name }}</span>
                                 @endif
