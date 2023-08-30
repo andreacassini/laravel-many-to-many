@@ -26,7 +26,8 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|max:50',
             'cover_image' => 'image',
-            'tipologias_id' => 'required|exists:tipologias,id',
+            'type_id' => 'required|exists:types,id',
+            'technologies' => 'required|exists:technologies,id',
         ];
     }
 
@@ -36,8 +37,10 @@ class StorePostRequest extends FormRequest
             'title.required' => 'Il titolo è obbligatorio',
             'title.max' => 'Il titolo deve essere lungo al massimo :max caratteri',
             'cover_image.image'  => 'Il file caricato deve essere un file immagine',
-            'tipologias_id.required' => 'Devi selezionare un campo',
-            'tipologias_id.exists' => 'Tipo selezionato non valido',
+            'type_id.required' => 'Devi selezionare un campo type',
+            'type_id.exists' => 'Tipo selezionato non valido',
+            'technologies.required' => 'Devi selezionare almeno una Tecnologia',
+            'technologies.exists' => 'Tecnologia selezionata non valida',
         ];
     }
 }

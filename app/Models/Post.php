@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Str;
-use App\Models\Tipologia;
+use App\Models\Type;
 use App\Models\Technology;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -14,11 +14,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'content', 'slug', 'cover_image', 'tipologia_id'];
+    protected $fillable = ['title', 'content', 'slug', 'cover_image', 'type_id'];
 
-    public function tipologia(): BelongsTo
+    public function type(): BelongsTo
     {
-        return $this->belongsTo(Tipologia::class);
+        return $this->belongsTo(Type::class);
     }
     public function technologies(): BelongsToMany
     {

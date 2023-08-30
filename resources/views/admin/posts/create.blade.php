@@ -32,23 +32,23 @@
                     <span>Seleziona le Tecnologie:</span>
                     @foreach ($technologies as $technology)
                         <div class="my-2">
-                            <input type="checkbox" name="technologies[]" value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : ''}} class="form-check-input @error('cover_image')is-invalid @enderror"">
+                            <input type="checkbox" name="technologies[]" value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : ''}} class="form-check-input  @error('technologies') is-invalid @enderror">
                             <label class="form-check-label">{{ $technology->name }}</label>
                         </div>
                     @endforeach
                     @error('technologies')
                     <div class="text-danger">{{ $message }}</div>
-                @enderror
+                    @enderror
                 </div>
                 <div class="form-group mt-4">
-                    <label for="content">Tipologia:</label>
-                    <select name="tipologia_id" id="tipologia_id" class="form-control @error('tipologia_id')is-invalid @enderror" value="">
+                    <label for="content">type:</label>
+                    <select name="type_id" id="type_id" class="form-control @error('type_id')is-invalid @enderror" value="">
                         <option value="">Choose type</option>
-                        @foreach($tipologias as $tipologia)
-                        <option value="{{ $tipologia->id }}"  @selected(old('tipologia_id') == $tipologia->id)>{{ $tipologia->name}} </option>
+                        @foreach($types as $type)
+                        <option value="{{ $type->id }}"  @selected(old('type_id') == $type->id)>{{ $type->name}} </option>
                         @endforeach
                     </select>
-                    @error('tipologia_id')
+                    @error('type_id')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
