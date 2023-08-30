@@ -29,7 +29,7 @@
                     @enderror
                 </div>
                 <div class="form-group mt-4">
-                    <span>Seleziona le Tecnologie</span>
+                    <span>Seleziona le Tecnologie:</span>
                     @foreach ($technologies as $technology)
                         <div class="my-2">
                             <input type="checkbox" name="technologies[]" value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : ''}} class="form-check-input">
