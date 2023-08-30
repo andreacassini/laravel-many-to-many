@@ -32,7 +32,9 @@ class PostController extends Controller
     {
         $types = Type::all();
 
-        return view('admin.posts.create', compact('types'));
+        $technologies = Technology::all();
+
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
