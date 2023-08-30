@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Post;
 use App\Models\Type;
+use App\Models\Technology;
 
 class PostController extends Controller
 {
