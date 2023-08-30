@@ -26,7 +26,7 @@ class UpdatePostRequest extends FormRequest
         return [
             'title' => 'required|max:50',
             'cover_image' => 'image',
-            'type_id' => 'required|exists:type.id',
+            'tipologia_id' => 'required|exists:tipologia.id',
             'technologies' => 'required|exists:technologies,id',
         ];
     }
@@ -36,8 +36,8 @@ class UpdatePostRequest extends FormRequest
             'title.required' => 'Il titolo è obbligatorio',
             'title.max' => 'Il titolo deve essere lungo al massimo :max caratteri',
             'cover_image.image'  => 'Il file caricato deve essere un file immagine',
-            'type_id.required' => 'Devi selezionare un campo',
-            'type_id.exists' => 'Tipo selezionato non valido',
+            'tipologia_id.required' => 'Devi selezionare un campo',
+            'tipologia_id.exists' => 'Tipo selezionato non valido',
             'technologies.required' => 'Devi fare almeno una selezione',
             'technologies.exists' => 'Selezione non valida',
         ];

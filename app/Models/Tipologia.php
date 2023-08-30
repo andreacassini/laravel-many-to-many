@@ -9,11 +9,10 @@ use Illuminate\Support\Str;
 
 use App\Models\Post;
 
-class Type extends Model
+class Tipologia extends Model
 {
     use HasFactory;
 
-    public $table = 'types';
     protected $fillable = ['name', 'slug'];
 
     public function posts(): HasMany
