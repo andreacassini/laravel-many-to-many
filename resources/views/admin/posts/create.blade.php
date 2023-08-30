@@ -14,6 +14,7 @@
         <div class="col-12">
             <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                {{-- TITLE --}}
                 <div class="form-group mt-4">
                     <label for="title">Title:</label>
                     <input type="text" name="title" id="title" class="form-control @error('title')is-invalid @enderror" value="{{ old('title') }}">
@@ -21,6 +22,7 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                {{-- COVER IMAGE --}}
                 <div class="form-group mt-4">
                     <label class="control-label">Cover Image:</label>
                     <input type="file" name="cover_image" id="cover_image" class="form-control @error('cover_image')is-invalid @enderror">
@@ -28,6 +30,7 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                {{-- TECHNOLOGIES --}}
                 <div class="form-group mt-4">
                     <span>Select Technologies:</span>
                     @foreach ($technologies as $technology)
@@ -40,6 +43,7 @@
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                {{-- TYPES --}}
                 <div class="form-group mt-4">
                     <label for="content">Type:</label>
                     <select name="type_id" id="type_id" class="form-control @error('type_id')is-invalid @enderror" value="">
@@ -52,6 +56,7 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                {{-- CONTENT --}}
                 <div class="form-group mt-4">
                     <label for="content">Content:</label>
                     <input type="text" name="content" id="content" class="form-control"  value="{{ old('content') }}">
