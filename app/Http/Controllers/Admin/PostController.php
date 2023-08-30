@@ -62,7 +62,6 @@ class PostController extends Controller
         if ($request->has('technologies')) {
 
             $post->technologies()->attach($request->technologies);
-            dd($request);
         }
 
         return redirect()->route('admin.posts.show', compact('post'));

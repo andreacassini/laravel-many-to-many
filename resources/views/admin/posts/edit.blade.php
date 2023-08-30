@@ -33,7 +33,7 @@
                         @enderror
                     </div>
                     <div class="form-group my-4">
-                        <span>Seleziona le Tecnologie</span>
+                        <span>Select Technologies:</span>
                         @foreach ($technologies as $technology)
                             <div class="my-2">
                                 @if ($errors->any())
@@ -52,7 +52,7 @@
                     <div class="form-group my-4">
                         <label class="control-label my-2">Type:</label>
                         <select name="type_id" id="type_id" class="form-control @error('type_id') is-invalid @enderror" value="">
-                            <option value="">Modifica La Tipologia</option>
+                            <option value="">Modify Type:</option>
                             @foreach ($types as $type)
                                 <option @selected(old('type_id', $post->type_id) == $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
                             @endforeach

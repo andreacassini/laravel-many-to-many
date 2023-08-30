@@ -34,14 +34,12 @@
                             </div>
                             {{-- TECHNOLOGIES --}}
                             <div class=" col-12 my-5">
-                                @if (empty($post->technologies->name))
-                                    <span>Technology not available</span>
-                                @else
-                                    <!-- Technology Label -->
-                                    <label class="fw-bold">Technology:</label>
-                                    <!-- Technology Content -->
-                                    <span>{{ $post->technologies->name }}</span>
-                                @endif
+                                <label class="fw-bold mb-3">Technology:</label>
+                                @foreach ($post->technologies as $technology)
+                                <ul>
+                                    <li>{{$technology->name}}</li>
+                                </ul>
+                                @endforeach
                             </div>
                             <div class="col-6">
                                 <div class="row justify-content-around">
