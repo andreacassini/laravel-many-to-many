@@ -34,7 +34,7 @@ class PostController extends Controller
 
         $technologies = Technology::all();
 
-        return view('admin.projects.create', compact('types', 'technologies'));
+        return view('admin.posts.create', compact('types', 'technologies'));
     }
 
     /**
@@ -46,7 +46,6 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         $form_data = $request->all();
-        ddd($form_data);
         $post = new Post();
 
         if ($request->hasFile('cover_image')) {
@@ -60,7 +59,12 @@ class PostController extends Controller
         $post->fill($form_data);
         $post->save();
 
-        return redirect()->route('admin.posts.index');
+        if ($request->has('technologies')) {
+
+            $post->technologies()->attach($request->technologies);
+        }
+
+        return redirect()->route('admin.posts.show', compact('post'));
     }
 
     /**
@@ -83,8 +87,12 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        $types = Type::all();
+
+        $technologies = Technology::all();
+
         $post = Post::findOrFail($id);
-        return view('admin.posts.edit', compact('post'));
+        return view('admin.posts.edit', compact('post', 'types', 'technologies'));
     }
 
     /**
@@ -107,7 +115,13 @@ class PostController extends Controller
         }
 
         $post->update($form_data);
-        return redirect()->route('admin.posts.index');
+
+        if ($request->has('technologies')) {
+
+            $post->technologies()->sync($request->technologies);
+        }
+
+        return redirect()->route('admin.posts.show', compact('post'));
     }
 
     /**
@@ -119,6 +133,8 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
+
+        $post->technologies()->detach();
 
         $post->delete();
         return redirect()->route('admin.posts.index');

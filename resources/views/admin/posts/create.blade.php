@@ -29,6 +29,15 @@
                     @enderror
                 </div>
                 <div class="form-group mt-4">
+                    <span>Seleziona le Tecnologie</span>
+                    @foreach ($technologies as $technology)
+                        <div class="my-2">
+                            <input type="checkbox" name="technologies[]" value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : ''}} class="form-check-input">
+                            <label class="form-check-label">{{ $technology->name }}</label>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="form-group mt-4">
                     <label for="content">Type:</label>
                     <select name="type_id" id="type_id" class="form-control @error('type_id')is-invalid @enderror">
                         <option value="">Choose type</option>

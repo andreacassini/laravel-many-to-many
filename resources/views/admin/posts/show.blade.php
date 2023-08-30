@@ -18,6 +18,16 @@
                             <div class="col-6">
                                 <img src="{{asset('storage/'.$post->cover_image)}}" alt="img" width="500px">
                             </div>
+                            <div class=" col my-5">
+                                @if (empty($post->technologies->name))
+                                    <span>Tecnologia non disponibile</span>
+                                @else
+                                    <!-- Technology Label -->
+                                    <label class="fw-bold">Tecnologia:</label>
+                                    <!-- Technology Content -->
+                                    <span>{{ $post->technologies->name }}</span>
+                                @endif
+                            </div>
                             <div class="col-6">
                                 <div class="row justify-content-around">
                                 <!-- Image -->
