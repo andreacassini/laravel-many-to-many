@@ -55,7 +55,6 @@ class PostController extends Controller
         }
 
         $post = new Post();
-
         $form_data['slug'] = $post->generateSlug($form_data['title']);
 
         $post->fill($form_data);
