@@ -32,6 +32,35 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-group my-4">
+                        <span>Seleziona le Tecnologie</span>
+                        @foreach ($technologies as $technology)
+                            <div class="my-2">
+                                @if ($errors->any())
+                                    <input type="checkbox" name="technologies[]" value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : ''}} class="form-check-input @error('technologies') is-invalid @enderror">
+                                @else
+                                    <input type="checkbox" name="technologies[]" value="{{ $technology->id }}" {{ $post->technologies->contains($technology) ? 'checked' : ''}} class="form-check-input @error('technologies') is-invalid @enderror">
+                                @endif
+                                <label class="form-check-label">{{ $technology->name }}</label>
+                            </div>
+                        @endforeach
+                        <!-- Technologies Error Text -->
+                        @error('technologies')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group my-4">
+                        <label class="control-label my-2">Type:</label>
+                        <select name="type_id" id="type_id" class="form-control @error('type_id') is-invalid @enderror" value="">
+                            <option value="">Modifica La Tipologia</option>
+                            @foreach ($types as $type)
+                                <option @selected(old('type_id', $post->type_id) == $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('type_id')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
                     <div class="form-group my-2">
                         <label class="control-label mb-1">Content:</label>
                         <input type="text" id="content" name="content" class="form-control" placeholder="content" value="{{old('content') ?? $post->content}}">
@@ -43,6 +72,17 @@
                     <div class=" form-group my-2">
                         <button type="submit" class="btn btn-success"> Save</button>
                     </div>
+                    @if (count($errors) >0)
+<div class="alert alert-danger">
+<strong>Whoops! Something went wrong!</strong>
+<br><br>
+<ul>
+@foreach ($errors->all() as $error)
+<li>{{ $error }}</li>
+@endforeach
+</ul>
+</div>
+@endif
                 </form>
             </div>
         </div>

@@ -29,7 +29,7 @@
                     @enderror
                 </div>
                 <div class="form-group mt-4">
-                    <span>Seleziona le Tecnologie:</span>
+                    <span>Select Technologies:</span>
                     @foreach ($technologies as $technology)
                         <div class="my-2">
                             <input type="checkbox" name="technologies[]" value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : ''}} class="form-check-input  @error('technologies') is-invalid @enderror">
@@ -41,7 +41,7 @@
                     @enderror
                 </div>
                 <div class="form-group mt-4">
-                    <label for="content">type:</label>
+                    <label for="content">Type:</label>
                     <select name="type_id" id="type_id" class="form-control @error('type_id')is-invalid @enderror" value="">
                         <option value="">Choose type</option>
                         @foreach($types as $type)
@@ -59,17 +59,6 @@
                 <div class="form-group my-4 col-12 text-center">
                     <button type="submit" class="btn btn-success">Save</button>
                 </div>
-                @if (count($errors) >0)
-<div class="alert alert-danger">
-<strong>Whoops! Something went wrong!</strong>
-<br><br>
-<ul>
-@foreach ($errors->all() as $error)
-<li>{{ $error }}</li>
-@endforeach
-</ul>
-</div>
-@endif
             </form>
         </div>
     </div>

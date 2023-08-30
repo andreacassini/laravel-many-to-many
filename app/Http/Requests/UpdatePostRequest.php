@@ -26,7 +26,7 @@ class UpdatePostRequest extends FormRequest
         return [
             'title' => 'required|max:50',
             'cover_image' => 'image',
-            'type_id' => 'required|exists:types.id',
+            'type_id' => 'required|exists:types,id',
             'technologies' => 'required|exists:technologies,id',
         ];
     }

@@ -16,11 +16,25 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
-                                <img src="{{asset('storage/'.$post->cover_image)}}" alt="img" width="500px">
+                                <div class="my-5">
+                                    @if (empty($post->type->name))
+                                        <span>Type not available</span>
+                                    @else
+                                        <label class="fw-bold">Tipologia:</label>
+                                        <span>{{ $post->type->name }}</span>
+                                    @endif
+                                </div>
+                                <div class="my-5">
+                            @if (empty($post->cover_image))
+                                <span>Image not available</span>
+                            @else
+                                <img src="{{ asset('storage/'.$post->cover_image) }}" alt="img non disponibile" width="500px">
+                            @endif
+                        </div>
                             </div>
-                            <div class=" col my-5">
+                            <div class=" col-12 my-5">
                                 @if (empty($post->technologies->name))
-                                    <span>Tecnologia non disponibile</span>
+                                    <span>Technology not available</span>
                                 @else
                                     <!-- Technology Label -->
                                     <label class="fw-bold">Tecnologia:</label>
