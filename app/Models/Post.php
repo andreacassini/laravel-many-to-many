@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Str;
 use App\Models\Type;
+use App\Models\Technology;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
@@ -18,7 +19,10 @@ class Post extends Model
     {
         return $this->belongsTo(Type::class);
     }
-
+    public function technologies()
+    {
+        return $this->belongsToMany(Technology::class);
+    }
     public static function generateSlug($title)
     {
         return Str::slug($title, '-');
