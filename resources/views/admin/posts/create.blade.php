@@ -38,14 +38,14 @@
                     @endforeach
                 </div>
                 <div class="form-group mt-4">
-                    <label for="content">Type:</label>
-                    <select name="type_id" id="type_id" class="form-control @error('type_id')is-invalid @enderror" value="">
+                    <label for="content">Tipologia:</label>
+                    <select name="tipologia_id" id="tipologia_id" class="form-control @error('tipologia_id')is-invalid @enderror" value="">
                         <option value="">Choose type</option>
-                        @foreach($types as $type)
-                        <option value="{{ $type->id }}"  @selected(old('type_id') == $type->id)>{{ $type->name}} </option>
+                        @foreach($tipologias as $tipologia)
+                        <option value="{{ $tipologia->id }}"  @selected(old('tipologia_id') == $tipologia->id)>{{ $tipologia->name}} </option>
                         @endforeach
                     </select>
-                    @error('type_id')
+                    @error('tipologia_id')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>

@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Post;
 use App\Models\Type;
+use App\Models\Tipologia;
 use App\Models\Technology;
 
 class PostController extends Controller
@@ -30,11 +31,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        $types = Type::all();
+        $tipologias = Tipologia::all();
 
         $technologies = Technology::all();
 
-        return view('admin.posts.create', compact('types', 'technologies'));
+        return view('admin.posts.create', compact('tipologias', 'technologies'));
     }
 
     /**
@@ -88,12 +89,12 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $types = Type::all();
+        $tipologias = Tipologia::all();
 
         $technologies = Technology::all();
 
         $post = Post::findOrFail($id);
-        return view('admin.posts.edit', compact('post', 'types', 'technologies'));
+        return view('admin.posts.edit', compact('post', 'tipologias', 'technologies'));
     }
 
     /**
